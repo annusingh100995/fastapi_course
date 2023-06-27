@@ -1,0 +1,75 @@
+Postgress password = annu1234
+
+Schemas are needed because
+it's a pain to get all the values from the body
+validating data
+forcing the client to send data in a schema that we expect
+
+
+CRUD
+Create : POST |   /posts
+
+Read : GET  |  /posts/:id -- want o get one specific post
+     : GET  |  /posts -- get all the posts
+
+Update : PUT/PATCH  |  /posts
+put = pass all the information to Update even one field
+patch = send the specific field that needs to be changed
+It's just a matter of user preference, choice between put/patch doesn't really matter
+
+Delete : DELETE  /posts/:id
+
+Always use plural: standard convention
+
+##
+Here I first created a dictionary of posts.Ideally people work with databases
+but we are using our system's memory as of now
+
+The order matters in api, make sure you structrue it properly. It always work top down
+
+Sqlalchemy
+
+Router: 
+needed for : 
+fetch and retirver info about user based of id as
+part of authentiaction process, let you know if the use is loggen in 
+if ypu want to see user profile 
+
+
+user is providin login information, schema to force it into proper format
+Auth2PasswordRequestForm will return username and password , so need to change emal
+user can use the access token to access the data from the api 
+
+
+Now write the logic for the api to check the user token is still valid and the token
+has not still expired
+
+Limit 
+that's how to provide query parameters 
+?limit=10
+
+Adding two query parameters add &
+{{URL}}posts?limit=5&skip=2
+
+skip is used for pagination in the front end
+
+Use %20 to add space in the search query parameter
+
+alembic downgrade -1/version number
+alembic upgrade +2/head/revision number
+
+Alembic can figure out the databases based on the modles we defined in the modesls.
+It's inteliigent enough to do that.
+We can do that because we imported models into the albemci env.py file and 
+stored into target_metadata
+You can make any chnages in the model, run revision autogenerete it will be created automatically
+by alembic
+
+
+Sending api request from Goolgle to the api
+fetch('http://localhost:8000/').then(res => res.json()).then(console.log)
+
+
+CORS Policy
+Cross Origin Resourse Sharing
+allows to make request rom a web browser on one domain to a server on a different domain
